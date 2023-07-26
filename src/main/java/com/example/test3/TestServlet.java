@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet(name = "TestServlet", value = "/TestServlet")
+@WebServlet(name = "TestServlet", value = "/people")
 public class TestServlet extends HttpServlet {
 
     @Override
@@ -31,7 +31,7 @@ public class TestServlet extends HttpServlet {
         String surname = " - ";
         try{
             Connection connection = DriverManager.getConnection(
-                    "jdbc:postgresql://192.168.0.223:5432/people",
+                    "jdbc:postgresql://192.168.0.222:5432/people",
                     "postgres", ""
             );
             Statement statement = connection.createStatement();
