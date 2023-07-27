@@ -30,7 +30,7 @@
 
 <br/>
 <h2>Create new person</h2>
-<form method="post" action="/add">
+<form method="post" action="/tomcat_postgres/add">
     Name<label><input type="text" name="name"></label><br/>
     Surname<label><input type="text" name="surname"></label><br/>
     Age<label><input type="number" name="age"></label><br/>
