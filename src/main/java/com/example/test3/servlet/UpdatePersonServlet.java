@@ -43,6 +43,6 @@ public class UpdatePersonServlet extends HttpServlet {
         person.setAge(Integer.parseInt(age));
         personDAO.update(person.getId(), person);
 
-        response.sendRedirect("http://192.168.0.197:8085/");
+        response.sendRedirect("http://192.168.0.197:8085/tomcat_postgres/");
     }
 }
