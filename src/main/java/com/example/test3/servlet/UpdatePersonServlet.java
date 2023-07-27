@@ -43,6 +43,6 @@ public class UpdatePersonServlet extends HttpServlet {
         person.setAge(Integer.parseInt(age));
         personDAO.update(person.getId(), person);
 
-        response.sendRedirect("/");
+        response.sendRedirect("http://192.168.0.197:8085/");
     }
 }
