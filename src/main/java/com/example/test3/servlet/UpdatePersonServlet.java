@@ -3,9 +3,11 @@ package com.example.test3.servlet;
 import com.example.test3.dao.PersonDAO;
 import com.example.test3.model.Person;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "UpdatePersonServlet", value = "/update")
@@ -27,7 +29,7 @@ public class UpdatePersonServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
 
         final String id = request.getParameter("id");
@@ -43,6 +45,6 @@ public class UpdatePersonServlet extends HttpServlet {
         person.setAge(Integer.parseInt(age));
         personDAO.update(person.getId(), person);
 
-        response.sendRedirect("http://192.168.0.197:8085/tomcat_postgres/");
+        response.sendRedirect(request.getContextPath() + "/");
     }
 }

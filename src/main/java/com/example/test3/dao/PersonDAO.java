@@ -3,7 +3,6 @@ package com.example.test3.dao;
 import com.example.test3.model.Person;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 

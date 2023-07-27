@@ -3,17 +3,15 @@ package com.example.test3.servlet;
 import com.example.test3.dao.PersonDAO;
 import com.example.test3.model.Person;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "AddPersonServlet", value = "/add")
 public class AddPersonServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +26,7 @@ public class AddPersonServlet extends HttpServlet {
 
             final Person person = new Person(name, surname, Integer.parseInt(age));
             personDAO.save(person);
-            response.sendRedirect("/"); //doGet(request, response);
+            response.sendRedirect(request.getContextPath() + "/");
         }
 
     }
