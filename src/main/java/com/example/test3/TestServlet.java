@@ -1,11 +1,15 @@
 package com.example.test3;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+
+import static java.sql.Connection.TRANSACTION_READ_COMMITTED;
 
 @WebServlet(name = "TestServlet", value = "/people")
 public class TestServlet extends HttpServlet {
@@ -29,11 +33,12 @@ public class TestServlet extends HttpServlet {
         String nname = " - ";
         int age = 0;
         String surname = " - ";
-        try{
+        try {
             Connection connection = DriverManager.getConnection(
-                    "jdbc:postgresql://192.168.0.222:5432/people",
+                    "jdbc:postgresql://192.168.0.134:5432/people",
                     "postgres", ""
             );
+            // connection.setTransactionIsolation(TRANSACTION_READ_COMMITTED);
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select * from people");
             rs.next();
@@ -42,12 +47,12 @@ public class TestServlet extends HttpServlet {
             age = rs.getInt(3);
             surname = rs.getString(4);
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         out.println("<h1>" + "id  " + "name  " + "age  " + "surname" + "</h1>");
         out.println("<h1>" + "----------------------------------------------------------" + "</h1>");
-        out.println("<h1>" + id + "   " + nname + "   "  + age + "   "  + surname + "</h1>");
+        out.println("<h1>" + id + "   " + nname + "   " + age + "   " + surname + "</h1>");
         out.println("</body></html>");
     }
 
