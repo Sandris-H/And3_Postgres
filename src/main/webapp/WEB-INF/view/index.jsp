@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<h1><%= "Hello Postgresql!" %></h1><br />
+<h1><%= "Hello people from Postgresql!" %></h1><br />
 <h2><%= "All people" %></h2><br/>
 
 <c:forEach var="person" items="${requestScope.people}">
